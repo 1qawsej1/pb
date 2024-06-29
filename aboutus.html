@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - School Prefectorial Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #004080;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .about-text, .about-image {
+            flex: 1;
+            margin: 10px;
+        }
+        .about-text {
+            max-width: 600px;
+        }
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            margin: 0 0 10px;
+        }
+        .card p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>About Us</h1>
+</div>
+
+<div class="container">
+    <h2 class="section-title">Our Mission</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <p>The School Prefectorial Board is dedicated to fostering leadership, responsibility, and community spirit among students. Our mission is to guide and support the student body, uphold school values, and contribute positively to the school environment.</p>
+        </div>
+        <div class="about-image">
+            <img src="mission.jpg" alt="Our Mission">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="section-title">Meet the Team</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="team_member1.jpg" alt="Team Member 1">
+            <h3>John Doe</h3>
+            <p>Head Prefect</p>
+        </div>
+        <div class="card">
+            <img src="team_member2.jpg" alt="Team Member 2">
+            <h3>Jane Smith</h3>
+            <p>Deputy Head Prefect</p>
+        </div>
+        <div class="card">
+            <img src="team_member3.jpg" alt="Team Member 3">
+            <h3>Emily Johnson</h3>
+            <p>Secretary</p>
+        </div>
+        <!-- Add more team members as needed -->
+    </div>
+</div>
+
+</body>
+</html>
