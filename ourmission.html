@@ -16,12 +16,84 @@
             color: white;
             padding: 10px 0;
             text-align: center;
+            position: relative;
         }
-        .container {
+        .header img {
+            width: 50px;
+            position: absolute;
+            top: 10px;
+        }
+        .header .logo-left {
+            left: 10px;
+        }
+        .header .logo-right {
+            right: 10px;
+        }
+        .nav {
+            background-color: #003366;
+            overflow: hidden;
+        }
+        .nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background-color: #575757;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;  
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .main {
             padding: 20px;
             margin: 20px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
         .section-title {
             text-align: center;
@@ -77,10 +149,35 @@
 <body>
 
 <div class="header">
-    <h1>Our Mission</h1>
+    <img src="logo1.png" alt="Logo 1" class="logo-left">
+    <h1>School Prefectorial Board</h1>
+    <img src="logo2.png" alt="Logo 2" class="logo-right">
 </div>
 
-<div class="container">
+<div class="nav">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">About Us 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="our-mission.html">Our Mission</a>
+            <a href="team.html">Team</a>
+        </div>
+    </div> 
+    <div class="dropdown">
+        <button class="dropbtn">Events 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#upcoming-events">Upcoming Events</a>
+            <a href="#past-events">Past Events</a>
+        </div>
+    </div> 
+    <a href="contact.html">Contact</a>
+</div>
+
+<div class="main">
     <h2 class="section-title">Our Mission</h2>
     <div class="about-content">
         <div class="about-text">
@@ -97,6 +194,10 @@
             <p>The School Prefectorial Board is dedicated to fostering leadership, responsibility, and community spirit among students. Our mission is to guide and support the student body, uphold school values, and contribute positively to the school environment.</p>
         </div>
     </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 School Prefectorial Board. All rights reserved.</p>
 </div>
 
 </body>
