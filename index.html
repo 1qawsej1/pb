@@ -184,6 +184,187 @@
     </div> 
     <a href="contact.html">Contact</a>
 </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK Sacred Heart Junior Prefectorial Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #800000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+        .header img {
+            width: 50px;
+            position: absolute;
+            top: 10px;
+        }
+        .header .logo-left {
+            left: 10px;
+        }
+        .header .logo-right {
+            right: 10px;
+        }
+        .nav {
+            background-color: #510400;
+            overflow: hidden;
+        }
+        .nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background-color: #575757;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;  
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .main {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 60px; /* Added to prevent footer overlap */
+        }
+        .footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative; /* Changed from fixed to relative */
+            width: 100%;
+            bottom: 0;
+        }
+        /* Slider styles */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .slides {
+            display: none;
+        }
+        .slider img {
+            width: 100%;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+            background: #ddd;
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="sacredheartlogo.png" alt="SMK SACRED HEART LOGO" class="logo-left">
+    <h1>SMK Sacred Heart Junior Prefectorial Board</h1>
+    <img src="logo2.png" alt="Logo 2" class="logo-right">
+</div>
+
+<div class="nav">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">About Us 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="our-mission.html">Our Mission</a>
+            <a href="team.html">Team</a>
+        </div>
+    </div> 
+    <div class="dropdown">
+        <button class="dropbtn">Events 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#upcoming-events">Upcoming Events</a>
+            <a href="#past-events">Past Events</a>
+        </div>
+    </div> 
+    <a href="contact.html">Contact</a>
+</div>
 
 <div class="main">
     <h2>Welcome to the School Prefectorial Board Website</h2>
@@ -192,13 +373,13 @@
     <!-- Slider -->
     <div class="slider">
         <div class="slides">
-            <img src="1.png" alt="Slide 1">
+            <img src="slide1.jpg" alt="Slide 1">
         </div>
         <div class="slides">
-            <img src="2.png" alt="Slide 2">
+            <img src="slide2.jpg" alt="Slide 2">
         </div>
         <div class="slides">
-            <img src="3.png" alt="Slide 3">
+            <img src="slide3.jpg" alt="Slide 3">
         </div>
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -217,16 +398,16 @@
 
 <script>
     let slideIndex = 0;
-    showSlides(Slide 1);
+    showSlides();
 
     function plusSlides(n) {
         slideIndex += n;
-        showSlides(Slide 2);
+        showSlides();
     }
 
     function currentSlide(n) {
         slideIndex = n - 1;
-        showSlides(Slide 3);
+        showSlides();
     }
 
     function showSlides() {
@@ -241,13 +422,11 @@
         }
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";  
-            slides[i].style.transform = "translateX(100%)";  // Move all slides out of view
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
         slides[slideIndex].style.display = "block";  
-        slides[slideIndex].style.transform = "translateX(0)";  // Bring the current slide into view
         dots[slideIndex].className += " active";
         setTimeout(function() { slideIndex++; showSlides(); }, 5000); // Change image every 5 seconds
     }
