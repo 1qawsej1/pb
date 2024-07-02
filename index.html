@@ -101,9 +101,13 @@
             position: relative;
             max-width: 100%;
             margin: auto;
+            overflow: hidden;
         }
         .slides {
             display: none;
+            position: absolute;
+            width: 100%;
+            transition: transform 1s ease;
         }
         .slider img {
             width: 100%;
@@ -121,6 +125,7 @@
             transition: 0.6s ease;
             border-radius: 0 3px 3px 0;
             user-select: none;
+            background-color: rgba(0,0,0,0.5);
         }
         .next {
             right: 0;
@@ -236,11 +241,13 @@
         }
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";  
+            slides[i].style.transform = "translateX(100%)";  // Move all slides out of view
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
         slides[slideIndex].style.display = "block";  
+        slides[slideIndex].style.transform = "translateX(0)";  // Bring the current slide into view
         dots[slideIndex].className += " active";
         setTimeout(function() { slideIndex++; showSlides(); }, 5000); // Change image every 5 seconds
     }
