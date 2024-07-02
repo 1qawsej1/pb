@@ -95,6 +95,57 @@
             width: 100%;
             bottom: 0;
         }
+        /* Slider styles */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .slides {
+            display: none;
+        }
+        .slider img {
+            width: 100%;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+            background: #ddd;
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
     </style>
 </head>
 <body>
@@ -131,11 +182,62 @@
 <div class="main">
     <h2>Welcome to the School Prefectorial Board Website</h2>
     <p>This is where you can find all the latest information about our school's prefectorial board, upcoming events, our mission, and much more.</p>
+
+    <!-- Slider -->
+    <div class="slider">
+        <div class="slides">
+            <img src="slide1.jpg" alt="Slide 1">
+        </div>
+        <div class="slides">
+            <img src="slide2.jpg" alt="Slide 2">
+        </div>
+        <div class="slides">
+            <img src="slide3.jpg" alt="Slide 3">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
 </div>
 
 <div class="footer">
     <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
 </div>
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("slides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 5000); // Change image every 5 seconds
+    }
+</script>
 
 </body>
 </html>
