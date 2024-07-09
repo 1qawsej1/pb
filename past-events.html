@@ -10,6 +10,9 @@
             margin: 0;
             padding: 20px;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure full height of the viewport */
         }
         .header {
             background-color: #800000;
@@ -48,9 +51,8 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
             width: 100%;
-            bottom: 0;
+            flex-shrink: 0; /* Prevent footer from shrinking */
         }
         .return-button {
             padding: 10px 20px;
@@ -127,4 +129,5 @@
 
 </body>
 </html>
+
 
