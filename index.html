@@ -147,6 +147,42 @@
         .active, .dot:hover {
             background-color: #717171;
         }
+        .registration-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        .registration-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .registration-form input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            margin: 10px auto;
+        }
+        .registration-form button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+        }
+        .registration-form button:hover {
+            background-color: #510400;
+        }
     </style>
 </head>
 <body>
@@ -204,6 +240,16 @@
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
+
+    <!-- Registration Form -->
+    <div class="registration-form">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="role" placeholder="Role (consul/teacher)" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
 </div>
 
 <div class="footer">
@@ -247,8 +293,20 @@
         dots[slideIndex].className += " active";
         slideInterval = setTimeout(function() { slideIndex++; showSlides(); }, 5000); // Change image every 5 seconds
     }
+
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let name = document.getElementById('name').value;
+        let role = document.getElementById('role').value.toLowerCase();
+        if (role === 'consul' || role === 'teacher') {
+            alert('Registration successful!');
+        } else {
+            alert('Registration is only open for consuls and teachers.');
+        }
+    });
 </script>
 
 </body>
 </html>
+
 
