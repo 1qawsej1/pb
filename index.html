@@ -279,6 +279,8 @@
 <script>
     let slideIndex = 0;
     let slideInterval;
+    let backstagePassword = "smksacredheartprefects"; // Define your backstage password
+
     showSlides();
 
     function plusSlides(n) {
@@ -329,20 +331,24 @@
         let password = document.getElementById("password").value;
         let role = document.getElementById("role").value;
         
-        // You can add validation and further processing here
-        console.log("Name:", name);
-        console.log("Password:", password);
-        console.log("Role:", role);
+        // Check if the entered password matches the backstage password
+        if (password === backstagePassword) {
+            // You can add validation and further processing here
+            console.log("Name:", name);
+            console.log("Password:", password);
+            console.log("Role:", role);
 
-        // Clear form fields after registration
-        document.getElementById("registerForm").reset();
-        // Optionally, hide the form after registration
-        document.getElementById("registrationForm").style.display = "none";
-        alert("Registration successful!");
+            // Clear form fields after registration
+            document.getElementById("registerForm").reset();
+            // Optionally, hide the form after registration
+            document.getElementById("registrationForm").style.display = "none";
+            alert("Registration successful!");
+        } else {
+            alert("Incorrect backstage password. Access denied.");
+        }
     }
 </script>
 
-</body>
+</body> 
 </html>
-
 
