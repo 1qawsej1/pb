@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Events - SMK Sacred Heart Junior Prefectorial Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #800000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .event {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .event h2 {
+            margin-top: 0;
+        }
+        .event p {
+            margin-bottom: 10px;
+        }
+        .edit-button {
+            padding: 10px 20px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .edit-button:hover {
+            background-color: #510400;
+        }
+        .footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Past Events - SMK Sacred Heart Junior Prefectorial Board</h1>
+</div>
+
+<div id="eventsContainer">
+    <!-- Events will be dynamically added here from JavaScript -->
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
+</div>
+
+<script>
+    // Function to fetch and display past events (simulated data for now)
+    function fetchAndDisplayPastEvents() {
+        // Replace with actual backend fetch or stored data
+        let pastEvents = [
+            { id: 1, title: "Sports Day 2023", date: "March 15, 2023", description: "Annual sports event with various competitions." },
+            { id: 2, title: "Science Fair 2022", date: "October 5, 2022", description: "Showcasing student projects in science and technology." }
+            // Add more events as needed
+        ];
+
+        let eventsContainer = document.getElementById('eventsContainer');
+        eventsContainer.innerHTML = ''; // Clear previous content
+
+        pastEvents.forEach(event => {
+            let eventDiv = document.createElement('div');
+            eventDiv.classList.add('event');
+
+            let titleElem = document.createElement('h2');
+            titleElem.textContent = event.title;
+
+            let dateElem = document.createElement('p');
+            dateElem.textContent = `Date: ${event.date}`;
+
+            let descriptionElem = document.createElement('p');
+            descriptionElem.textContent = event.description;
+
+            let editButton = document.createElement('button');
+            editButton.classList.add('edit-button');
+            editButton.textContent = 'Edit Event';
+            editButton.addEventListener('click', () => editEvent(event.id));
+
+            eventDiv.appendChild(titleElem);
+            eventDiv.appendChild(dateElem);
+            eventDiv.appendChild(descriptionElem);
+            eventDiv.appendChild(editButton);
+
+            eventsContainer.appendChild(eventDiv);
+        });
+    }
+
+    // Example function to edit an event (replace with actual backend integration)
+    function editEvent(eventId) {
+        let eventToEdit = pastEvents.find(event => event.id === eventId);
+        if (!eventToEdit) {
+            alert('Event not found!');
+            return;
+        }
+
+        let newTitle = prompt('Enter new title:', eventToEdit.title);
+        let newDate = prompt('Enter new date:', eventToEdit.date);
+        let newDescription = prompt('Enter new description:', eventToEdit.description);
+
+        // Update event data (in real application, send updates to backend)
+        eventToEdit.title = newTitle;
+        eventToEdit.date = newDate;
+        eventToEdit.description = newDescription;
+
+        // Refresh displayed events
+        fetchAndDisplayPastEvents();
+    }
+
+    // Initial fetch and display of past events
+    fetchAndDisplayPastEvents();
+</script>
+
+</body>
+</html>
