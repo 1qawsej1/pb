@@ -42,6 +42,18 @@
             width: 100%;
             bottom: 0;
         }
+        .return-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .return-button:hover {
+            background-color: #510400;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +67,7 @@
 </div>
 
 <div class="footer">
+    <button class="return-button" onclick="returnToMain()">Return to Main</button>
     <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
 </div>
 
@@ -94,8 +107,14 @@
 
     // Initial fetch and display of past events
     fetchAndDisplayPastEvents();
+
+    // Function to return to main page
+    function returnToMain() {
+        window.location.href = "index.html"; // Replace with your main page URL
+    }
 </script>
 
 </body>
 </html>
+
 
