@@ -6,7 +6,7 @@
     <title>Past Events - SMK Sacred Heart Junior Prefectorial Board</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #f4f4f4;
@@ -16,6 +16,7 @@
             color: white;
             padding: 10px 0;
             text-align: center;
+            margin-bottom: 20px;
         }
         .header h1 {
             margin: 0;
@@ -23,15 +24,24 @@
         .event {
             background-color: white;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .event:hover {
+            transform: translateY(-5px);
         }
         .event h2 {
             margin-top: 0;
+            color: #800000;
+            font-size: 24px;
+            margin-bottom: 10px;
         }
         .event p {
             margin-bottom: 10px;
+            color: #555;
+            line-height: 1.6;
         }
         .footer {
             background-color: #800000;
@@ -43,13 +53,14 @@
             bottom: 0;
         }
         .return-button {
-            margin-top: 20px;
             padding: 10px 20px;
             background-color: #800000;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
         .return-button:hover {
             background-color: #510400;
@@ -116,5 +127,4 @@
 
 </body>
 </html>
-
 
