@@ -155,6 +155,7 @@
             margin-top: 20px;
             max-width: 400px;
             margin: 20px auto;
+            display: none; /* Hidden by default */
         }
         .registration-form h2 {
             margin-bottom: 20px;
@@ -181,6 +182,21 @@
             margin: 10px auto;
         }
         .registration-form button:hover {
+            background-color: #510400;
+        }
+        .create-account-button {
+            display: block;
+            width: calc(100% - 20px);
+            padding: 10px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin: 20px auto;
+        }
+        .create-account-button:hover {
             background-color: #510400;
         }
     </style>
@@ -241,11 +257,15 @@
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 
+    <!-- Create Account Button -->
+    <button class="create-account-button" onclick="toggleForm()">Create Account</button>
+
     <!-- Registration Form -->
-    <div class="registration-form">
+    <div class="registration-form" id="registrationForm">
         <h2>Register</h2>
-        <form id="registerForm">
+        <form id="registerForm" onsubmit="registerUser(event)">
             <input type="text" id="name" placeholder="Name" required>
+            <input type="password" id="password" placeholder="Password" required>
             <input type="text" id="role" placeholder="Role (consul/teacher)" required>
             <button type="submit">Register</button>
         </form>
@@ -294,16 +314,32 @@
         slideInterval = setTimeout(function() { slideIndex++; showSlides(); }, 5000); // Change image every 5 seconds
     }
 
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        let name = document.getElementById('name').value;
-        let role = document.getElementById('role').value.toLowerCase();
-        if (role === 'consul' || role === 'teacher') {
-            alert('Registration successful!');
+    function toggleForm() {
+        let form = document.getElementById("registrationForm");
+        if (form.style.display === "none") {
+            form.style.display = "block";
         } else {
-            alert('Registration is only open for consuls and teachers.');
+            form.style.display = "none";
         }
-    });
+    }
+
+    function registerUser(event) {
+        event.preventDefault(); // Prevent form submission
+        let name = document.getElementById("name").value;
+        let password = document.getElementById("password").value;
+        let role = document.getElementById("role").value;
+        
+        // You can add validation and further processing here
+        console.log("Name:", name);
+        console.log("Password:", password);
+        console.log("Role:", role);
+
+        // Clear form fields after registration
+        document.getElementById("registerForm").reset();
+        // Optionally, hide the form after registration
+        document.getElementById("registrationForm").style.display = "none";
+        alert("Registration successful!");
+    }
 </script>
 
 </body>
