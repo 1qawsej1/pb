@@ -85,7 +85,6 @@
             margin: 20px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 60px; /* Added to prevent footer overlap */
         }
         .footer {
             background-color: #800000;
@@ -145,42 +144,6 @@
         .card p {
             margin: 0;
         }
-        .registration-form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-top: 20px;
-            max-width: 400px;
-            margin: 20px auto;
-        }
-        .registration-form h2 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .registration-form input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: block;
-            margin: 10px auto;
-        }
-        .registration-form button {
-            width: calc(100% - 20px);
-            padding: 10px;
-            background-color: #800000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            margin: 10px auto;
-        }
-        .registration-form button:hover {
-            background-color: #510400;
-        }
     </style>
 </head>
 <body>
@@ -231,38 +194,12 @@
             <p>The School Prefectorial Board is dedicated to fostering leadership, responsibility, and community spirit among students. Our mission is to guide and support the student body, uphold school values, and contribute positively to the school environment.</p>
         </div>
     </div>
-
-    <!-- Registration Form -->
-    <div class="registration-form">
-        <h2>Register</h2>
-        <form id="registerForm">
-            <input type="text" id="name" placeholder="Name" required>
-            <input type="text" id="role" placeholder="Role (consul/teacher)" required>
-            <button type="submit">Register</button>
-        </form>
-    </div>
 </div>
 
 <div class="footer">
     <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
 </div>
 
-<script>
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const role = document.getElementById('role').value.toLowerCase();
-
-        if (role === 'consul' || role === 'teacher') {
-            // Simulate a registration success
-            alert('Registration successful for ' + role);
-        } else {
-            alert('Invalid role. Only consuls and teachers can register.');
-        }
-    });
-</script>
-
 </body>
-</html>
+</html> 
 
