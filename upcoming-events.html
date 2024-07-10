@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - SMK Sacred Heart Junior Prefectorial Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header, .footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .nav {
+            background-color: #510400;
+            overflow: hidden;
+        }
+        .nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background-color: #575757;
+        }
+        .main {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .event {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .event:last-child {
+            border-bottom: none;
+        }
+        .event h3 {
+            margin: 0 0 5px;
+        }
+        .event p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>SMK Sacred Heart Junior Prefectorial Board</h1>
+</div>
+
+<div class="nav">
+    <a href="index.html">Home</a>
+    <a href="upcoming-events.html">Upcoming Events</a>
+    <a href="past-events.html">Past Events</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<div class="main">
+    <h2>Upcoming Events</h2>
+    <div id="events"></div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
+</div>
+
+<script>
+    // Fetch events data from the backend
+    fetch('events.json')
+        .then(response => response.json())
+        .then(data => {
+            const eventsContainer = document.getElementById('events');
+            data.forEach(event => {
+                const eventDiv = document.createElement('div');
+                eventDiv.classList.add('event');
+                eventDiv.innerHTML = `
+                    <h3>${event.title}</h3>
+                    <p><strong>Date:</strong> ${event.date}</p>
+                    <p><strong>Description:</strong> ${event.description}</p>
+                `;
+                eventsContainer.appendChild(eventDiv);
+            });
+        });
+</script>
+
+</body>
+</html>
