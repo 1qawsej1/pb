@@ -70,24 +70,26 @@
 </div>
 
 <script>
-    // Fetch and display events data
-    fetch('events.json')
-        .then(response => response.json())
-        .then(data => {
-            const eventsContainer = document.getElementById('events');
-            data.forEach((event, index) => {
-                const eventDiv = document.createElement('div');
-                eventDiv.classList.add('event-form');
-                eventDiv.innerHTML = `
-                    <input type="text" class="editTitle" value="${event.title}" required>
-                    <input type="date" class="editDate" value="${event.date}" required>
-                    <textarea class="editDescription" required>${event.description}</textarea>
-                    <button type="button" onclick="updateEvent(${index})">Update Event</button>
-                    <button type="button" onclick="deleteEvent(${index})">Delete Event</button>
-                `;
-                eventsContainer.appendChild(eventDiv);
-            });
-        });
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('events.json')
+            .then(response => response.json())
+            .then(data => {
+                const eventsContainer = document.getElementById('events');
+                data.forEach((event, index) => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.classList.add('event-form');
+                    eventDiv.innerHTML = `
+                        <input type="text" class="editTitle" value="${event.title}" required>
+                        <input type="date" class="editDate" value="${event.date}" required>
+                        <textarea class="editDescription" required>${event.description}</textarea>
+                        <button type="button" onclick="updateEvent(${index})">Update Event</button>
+                        <button type="button" onclick="deleteEvent(${index})">Delete Event</button>
+                    `;
+                    eventsContainer.appendChild(eventDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching events:', error));
+    });
 
     document.getElementById('addEventForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -101,7 +103,8 @@
             .then(data => {
                 data.push(newEvent);
                 saveEvents(data);
-            });
+            })
+            .catch(error => console.error('Error adding event:', error));
     });
 
     function updateEvent(index) {
@@ -115,7 +118,8 @@
             .then(data => {
                 data[index] = updatedEvent;
                 saveEvents(data);
-            });
+            })
+            .catch(error => console.error('Error updating event:', error));
     }
 
     function deleteEvent(index) {
@@ -124,7 +128,8 @@
             .then(data => {
                 data.splice(index, 1);
                 saveEvents(data);
-            });
+            })
+            .catch(error => console.error('Error deleting event:', error));
     }
 
     function saveEvents(data) {
@@ -135,11 +140,16 @@
             },
             body: JSON.stringify(data),
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-            alert('Events updated successfully!');
-            location.reload();
-        });
+            if (data.status === 'success') {
+                alert('Events updated successfully!');
+                location.reload();
+            } else {
+                alert('Error saving events: ' + data.message);
+            }
+        })
+        .catch(error => console.error('Error saving events:', error));
     }
 </script>
 
