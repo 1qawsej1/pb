@@ -5,46 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backstage - Edit Upcoming Events</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .header, .footer {
-            background-color: #800000;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-        }
-        .main {
-            padding: 20px;
-            margin: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .event-form {
-            margin: 20px 0;
-        }
-        .event-form input, .event-form textarea {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: block;
-        }
-        .event-form button {
-            padding: 10px;
-            background-color: #800000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .event-form button:hover {
-            background-color: #510400;
-        }
+        /* Your existing CSS styles */
     </style>
 </head>
 <body>
@@ -149,7 +110,25 @@
         .then(response => {
             if (response.status === 'success') {
                 alert('Events updated successfully!');
-                fetchEvents(); // Refresh events after successful update
+                // Now update the upcoming-events.html page using fetch and POST method
+                fetch('update-upcoming-events.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.status === 'success') {
+                        alert('Upcoming events page updated successfully!');
+                        // Optionally, you can fetch the events again to refresh the view
+                        // fetchEvents();
+                    } else {
+                        alert('Error updating upcoming events page: ' + response.message);
+                    }
+                })
+                .catch(error => console.error('Error updating upcoming events page:', error));
             } else {
                 alert('Error saving events: ' + response.message);
             }
@@ -160,5 +139,3 @@
 
 </body>
 </html>
-
-
