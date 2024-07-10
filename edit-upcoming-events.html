@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backstage - Edit Upcoming Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header, .footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .main {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .event-form {
+            margin: 20px 0;
+        }
+        .event-form input, .event-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+        }
+        .event-form button {
+            padding: 10px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .event-form button:hover {
+            background-color: #510400;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Backstage - Edit Upcoming Events</h1>
+</div>
+
+<div class="main">
+    <h2>Add New Event</h2>
+    <form class="event-form" id="addEventForm">
+        <input type="text" id="eventTitle" placeholder="Event Title" required>
+        <input type="date" id="eventDate" required>
+        <textarea id="eventDescription" placeholder="Event Description" required></textarea>
+        <button type="submit">Add Event</button>
+    </form>
+    <h2>Edit Existing Events</h2>
+    <div id="events"></div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
+</div>
+
+<script>
+    // Fetch and display events data
+    fetch('events.json')
+        .then(response => response.json())
+        .then(data => {
+            const eventsContainer = document.getElementById('events');
+            data.forEach((event, index) => {
+                const eventDiv = document.createElement('div');
+                eventDiv.classList.add('event-form');
+                eventDiv.innerHTML = `
+                    <input type="text" class="editTitle" value="${event.title}" required>
+                    <input type="date" class="editDate" value="${event.date}" required>
+                    <textarea class="editDescription" required>${event.description}</textarea>
+                    <button type="button" onclick="updateEvent(${index})">Update Event</button>
+                    <button type="button" onclick="deleteEvent(${index})">Delete Event</button>
+                `;
+                eventsContainer.appendChild(eventDiv);
+            });
+        });
+
+    document.getElementById('addEventForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const title = document.getElementById('eventTitle').value;
+        const date = document.getElementById('eventDate').value;
+        const description = document.getElementById('eventDescription').value;
+        const newEvent = { title, date, description };
+
+        fetch('events.json')
+            .then(response => response.json())
+            .then(data => {
+                data.push(newEvent);
+                saveEvents(data);
+            });
+    });
+
+    function updateEvent(index) {
+        const title = document.getElementsByClassName('editTitle')[index].value;
+        const date = document.getElementsByClassName('editDate')[index].value;
+        const description = document.getElementsByClassName('editDescription')[index].value;
+        const updatedEvent = { title, date, description };
+
+        fetch('events.json')
+            .then(response => response.json())
+            .then(data => {
+                data[index] = updatedEvent;
+                saveEvents(data);
+            });
+    }
+
+    function deleteEvent(index) {
+        fetch('events.json')
+            .then(response => response.json())
+            .then(data => {
+                data.splice(index, 1);
+                saveEvents(data);
+            });
+    }
+
+    function saveEvents(data) {
+        fetch('save-events.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert('Events updated successfully!');
+            location.reload();
+        });
+    }
+</script>
+
+</body>
+</html>
