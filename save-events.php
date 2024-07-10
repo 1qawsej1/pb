@@ -2,27 +2,22 @@
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = file_get_contents('php://input');
+    $data = json_decode(file_get_contents('php://input'), true);
     
-    // Debugging: Log received data
-    file_put_contents('debug.log', "Received data: " . $data . PHP_EOL, FILE_APPEND);
+    // Assuming events.json exists and is writable
+    $events = json_decode(file_get_contents('events.json'), true);
+    $events[] = $data;
     
-    if (json_decode($data) !== null) {
-        $result = file_put_contents('events.json', $data);
-        
-        if ($result === false) {
-            http_response_code(500);
-            echo json_encode(['status' => 'error', 'message' => 'Failed to save events']);
-        } else {
-            echo json_encode(['status' => 'success', 'message' => 'Events saved successfully']);
-        }
+    $result = file_put_contents('events.json', json_encode($events));
+    
+    if ($result !== false) {
+        echo json_encode(['status' => 'success']);
     } else {
-        http_response_code(400);
-        echo json_encode(['status' => 'error', 'message' => 'Invalid JSON']);
+        http_response_code(500);
+        echo json_encode(['status' => 'error', 'message' => 'Failed to save event']);
     }
 } else {
-    http_response_code(405);
+    http_response_code(405); // Method Not Allowed
     echo json_encode(['status' => 'error', 'message' => 'Method Not Allowed']);
 }
 ?>
-
