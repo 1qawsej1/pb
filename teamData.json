@@ -1,0 +1,13 @@
+{
+  "team": {
+    "member1": {
+      "name": "Head Prefect",
+      "photo": "head_prefect.jpg"
+    },
+    "member2": {
+      "name": "Vice Head Prefect 1",
+      "photo": "vice_head_prefect1.jpg"
+    },
+    // Add other members as needed
+  }
+}
