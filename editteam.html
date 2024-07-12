@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backstage - Edit Team</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header, .footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .main {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .team-form {
+            margin: 20px 0;
+        }
+        .team-form input, .team-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+        }
+        .team-form button {
+            padding: 10px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .team-form button:hover {
+            background-color: #510400;
+        }
+        .team-member {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .member-card {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+        .member-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Backstage - Edit Team</h1>
+</div>
+
+<div class="main">
+    <h2>Edit Team Members</h2>
+    <div id="teamMembers"></div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        databaseURL: "YOUR_DATABASE_URL",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    const storage = firebase.storage();
+
+    // Fetch team members from Firebase
+    function fetchTeamMembers() {
+        database.ref('team').once('value').then((snapshot) => {
+            const data = snapshot.val();
+            const teamMembersContainer = document.getElementById('teamMembers');
+            teamMembersContainer.innerHTML = '';
+            Object.keys(data).forEach((key) => {
+                const member = data[key];
+                const memberDiv = document.createElement('div');
+                memberDiv.classList.add('member-card');
+                memberDiv.innerHTML = `
+                    <img src="${member.photo}" alt="${member.name}" id="photo_${key}">
+                    <input type="text" value="${member.name}" id="name_${key}">
+                    <input type="file" id="file_${key}">
+                    <button onclick="updateMember('${key}')">Update Member</button>
+                    <button onclick="deleteMember('${key}')">Delete Member</button>
+                `;
+                teamMembersContainer.appendChild(memberDiv);
+            });
+        });
+    }
+
+    // Update team member
+    function updateMember(key) {
+        const name = document.getElementById(`name_${key}`).value;
+        const file = document.getElementById(`file_${key}`).files[0];
+        if (file) {
+            const storageRef = storage.ref(`team/${file.name}`);
+            storageRef.put(file).then(() => {
+                storageRef.getDownloadURL().then((url) => {
+                    database.ref(`team/${key}`).update({
+                        name: name,
+                        photo: url
+                    }, (error) => {
+                        if (error) {
+                            alert('Failed to update member: ' + error.message);
+                        } else {
+                            alert('Member updated successfully!');
+                            fetchTeamMembers();
+                        }
+                    });
+                });
+            });
+        } else {
+            database.ref(`team/${key}`).update({
+                name: name
+            }, (error) => {
+                if (error) {
+                    alert('Failed to update member: ' + error.message);
+                } else {
+                    alert('Member updated successfully!');
+                    fetchTeamMembers();
+                }
+            });
+        }
+    }
+
+    // Delete team member
+    function deleteMember(key) {
+        const confirmed = confirm('Are you sure you want to delete this member?');
+        if (!confirmed) return;
+
+        database.ref(`team/${key}`).remove((error) => {
+            if (error) {
+                alert('Failed to delete member: ' + error.message);
+            } else {
+                alert('Member deleted successfully!');
+                fetchTeamMembers();
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchTeamMembers);
+</script>
+
+</body>
+</html>
