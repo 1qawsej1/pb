@@ -85,6 +85,7 @@
             margin: 20px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
         .footer {
             background-color: #800000;
             color: white;
@@ -103,6 +104,7 @@
             flex-wrap: wrap;
             justify-content: space-around;
             align-items: center;
+            margin-bottom: 30px;
         }
         .about-text, .about-image {
             flex: 1;
@@ -143,15 +145,31 @@
         .card p {
             margin: 0;
         }
+        /* Adjust the layout for the lyrics and other sections */
+        .lyrics, .prefect-clap, .prefect-song {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .lyrics p {
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        .prefect-song audio {
+            margin: 0 auto;
+        }
+        img {
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <img src="sacredheartlogo.png" alt="SMK SACRED HEART LOGO" class="logo-left"style="width: 100px; height: 90px;">
-
+    <img src="sacredheartlogo.png" alt="SMK SACRED HEART LOGO" class="logo-left" style="width: 100px; height: 90px;">
     <h1>SMK Sacred Heart Junior Prefectorial Board</h1>
-    <img src="prefectlogo.png" alt="PREFECT LOGO" class="logo-right"style= "width: 70px; height: 88px;">
+    <img src="prefectlogo.png" alt="PREFECT LOGO" class="logo-right" style="width: 70px; height: 88px;">
 </div>
 
 <div class="nav">
@@ -178,13 +196,14 @@
 </div>
 
 <div class="main">
+    <!-- About Us Section -->
     <h2 class="section-title">About Us</h2>
     <div class="about-content">
         <div class="about-text">
             <p>The School Prefectorial Board is dedicated to fostering leadership, responsibility, and community spirit among students. Our mission is to guide and support the student body, uphold school values, and contribute positively to the school environment.</p>
         </div>
         <div class="about-image">
-            <img src="Background.png" alt="About Us">
+            <img src="mission.jpg" alt="About Us">
         </div>
     </div>
 
@@ -199,48 +218,50 @@
         </audio>
     </div>
 
-<!-- Prefect Song Lyrics Section -->
-<div class="section-title">
-    <h2>Lyrics</h2>
-</div>
-<div class="lyrics" style="text-align: center; display: flex; justify-content: center; align-items: center; height: 300px;">
-    <p>
-        Berdoa serta berusaha kita semua<br>
-        Berkhidmat tanpa rasa megah<br>
-        Tunaikan tanggungjawab kita semua<br>
-        Berkhidmat dengan penuh semangat<br><br>
+    <!-- Prefect Song Lyrics Section -->
+    <div class="section-title">
+        <h2>Lyrics</h2>
+    </div>
+    <div class="lyrics">
+        <p>
+            Berdoa serta berusaha kita semua<br>
+            Berkhidmat tanpa rasa megah<br>
+            Tunaikan tanggungjawab kita semua<br>
+            Berkhidmat dengan penuh semangat<br><br>
 
-        Berdisiplin dan berusaha<br>
-        Ke arah perpaduan<br>
-        Pengawas marilah bertekad<br>
-        Untuk kebaikan sekolah<br><br>
+            Berdisiplin dan berusaha<br>
+            Ke arah perpaduan<br>
+            Pengawas marilah bertekad<br>
+            Untuk kebaikan sekolah<br><br>
 
-        Kepemimpinan kita bersama<br>
-        Mencapai azam kita<br>
-        Mengharumkan nama sekolah kita<br>
-        Itulah ikrar kita<br><br>
+            Kepemimpinan kita bersama<br>
+            Mencapai azam kita<br>
+            Mengharumkan nama sekolah kita<br>
+            Itulah ikrar kita<br><br>
 
-        PENGAWAS!!!
-        
-        Kepemimpinan kita bersama<br>
-        Mencapai azam kita<br>
-        Mengharumkan nama sekolah kita<br>
-        Itulah ikrar kita<br><br>
+            PENGAWAS!!!<br>
 
-        PENGAWAS!!!
-    </p>
-</div>
+            Kepemimpinan kita bersama<br>
+            Mencapai azam kita<br>
+            Mengharumkan nama sekolah kita<br>
+            Itulah ikrar kita<br><br>
 
+            PENGAWAS!!!
+        </p>
+    </div>
 
     <!-- Prefect Clap Photo Section -->
     <div class="section-title">
         <h2>Prefect Clap</h2>
     </div>
     <div class="prefect-clap">
-        <img src="Tepukan.png" alt="Prefect Clap" style="max-width: 100%; height: auto;">
+        <img src="Tepukan.png" alt="Prefect Clap">
     </div>
-        </div>
+</div>
 
+<div class="footer">
+    <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
+</div>
 
 </body>
-</html> 
+</html>
