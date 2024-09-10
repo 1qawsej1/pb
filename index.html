@@ -147,51 +147,14 @@
         .active, .dot:hover {
             background-color: #717171;
         }
-        .backstage-form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-top: 20px;
-            max-width: 400px;
-            margin: 20px auto;
-        }
-        .backstage-form h2 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .backstage-form input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: block;
-            margin: 10px auto;
-        }
-        .backstage-form button {
-            width: calc(100% - 20px);
-            padding: 10px;
-            background-color: #800000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            margin: 10px auto;
-        }
-        .backstage-form button:hover {
-            background-color: #510400;
-        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <img src="sacredheartlogo.png" alt="SMK SACRED HEART LOGO" class="logo-left"style="width: 100px; height: 90px;">
-
+    <img src="sacredheartlogo.png" alt="SMK SACRED HEART LOGO" class="logo-left" style="width: 100px; height: 90px;">
     <h1>SMK Sacred Heart Junior Prefectorial Board</h1>
-    <img src="prefectlogo.png" alt="PREFECT LOGO" class="logo-right"style= "width: 60px; height: 88px;">
+    <img src="prefectlogo.png" alt="PREFECT LOGO" class="logo-right" style="width: 60px; height: 88px;">
 </div>
 
 <div class="nav">
@@ -241,15 +204,6 @@
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-
-    <!-- Backstage Access Form -->
-    <div class="backstage-form" id="backstageForm">
-        <h2>Backstage Access</h2>
-        <form id="backstageFormInner" onsubmit="accessBackstage(event)">
-            <input type="password" id="backstagePassword" placeholder="Enter Password" required>
-            <button type="submit">Enter</button>
-        </form>
-    </div>
 </div>
 
 <div class="footer">
@@ -259,7 +213,6 @@
 <script>
     let slideIndex = 0;
     let slideInterval;
-    const backstagePassword = "322619"; 
 
     showSlides();
 
@@ -295,20 +248,7 @@
         dots[slideIndex].className += " active";
         slideInterval = setTimeout(function() { slideIndex++; showSlides(); }, 5000); // Change image every 5 seconds
     }
-
-    function accessBackstage(event) {
-        event.preventDefault(); // Prevent form submission
-        let password = document.getElementById("backstagePassword").value;
-        
-        // Check if the entered password matches the backstage password
-        if (password === backstagePassword) {
-            // Redirect to backstage.html after successful login
-            window.location.href = "backstage.html";
-        } else {
-            alert("Incorrect password. Please try again.");
-        }
-    }
 </script>
 
-</body> 
+</body>
 </html>
