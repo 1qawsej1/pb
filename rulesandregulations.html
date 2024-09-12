@@ -5,255 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMK Sacred Heart Junior Prefectorial Board</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Ensure the body takes at least the full viewport height */
-        }
-        .header {
-            background-color: #800000;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            position: relative;
-        }
-        .header img {
-            width: 50px;
-            position: absolute;
-            top: 10px;
-        }
-        .header .logo-left {
-            left: 10px;
-        }
-        .header .logo-right {
-            right: 10px;
-        }
-        .nav {
-            background-color: #510400;
-            overflow: hidden;
-        }
-        .nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        .nav a:hover, .dropbtn:hover {
-            background-color: #575757;
-        }
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
-        .dropdown .dropbtn {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .main {
-            padding: 20px;
-            margin: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            flex: 1; /* Allows main content to expand and push footer to the bottom */
-        }
-        .footer {
-            background-color: #800000;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            width: 100%;
-            bottom: 0;
-        }
+        /* Existing styles ... */
 
-        /* Slider Styles */
-        .slider, .slider-second {
-            position: relative;
-            max-width: 100%;
-            margin: auto;
-        }
-        .slides, .slides-second {
-            display: none;
-        }
-        .slider img, .slider-second img {
-            width: 100%;
-        }
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-        .dot-container, .dot-container-second {
-            text-align: center;
-            padding: 20px;
-            background: #ddd;
-        }
-        .dot, .dot-second {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-        .active, .dot:hover, .dot-second:hover {
-            background-color: #717171;
-        }
-
-        /* Prohibited Items Styles */
-        .prohibited-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
+        /* Large Photos Styles */
         .large-img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
+            width: 100%; /* Make the image take up the full width of its container */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 800px; /* Optional: Limit the maximum width to ensure it's not too large */
+            object-fit: contain; /* Ensure the entire image is visible without cropping */
+        }
+
+        /* Container for Large Photos */
+        .large-photos-container {
+            display: flex;
+            justify-content: center; /* Center the images horizontally */
+            gap: 20px; /* Space between the large images */
+            flex-wrap: wrap; /* Allow images to wrap on smaller screens */
         }
     </style>
 </head>
 <body>
+    <!-- Existing content ... -->
 
-<div class="header">
-    <img src="sacredheartlogo.png" alt="SMK SACRED HEART LOGO" class="logo-left" style="width: 100px; height: 90px;">
-    <h1>SMK Sacred Heart Junior Prefectorial Board</h1>
-    <img src="prefectlogo.png" alt="PREFECT LOGO" class="logo-right" style="width: 60px; height: 88px;">
-</div>
+    <div class="main">
+        <h2>Guidebook for Prefects - Rules And Regulations</h2>
 
-<div class="nav">
-    <a href="index.html">Home</a>
-    <div class="dropdown">
-        <button class="dropbtn">Info
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="aboutus.html">Info</a>
-            <a href="team.html">Team</a>
-        </div>
-    </div> 
-    <div class="dropdown">
-        <button class="dropbtn">Guide Book 
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="appearance.html">Appearance</a>
-            <a href="rulesandregulations.html">Rules & Regulations</a>
-        </div>
-    </div> 
-    <a href="contact.html">Contact</a>
-</div>
+        <!-- Prohibited Items Section -->
+        <section id="prohibited-items">
+            <h3>Prohibited Items</h3>
+            <div class="prohibited-items">
+                <!-- 21 Small Photos -->
+                <img src="11.png" alt="Prohibited Item 1">
+                <img src="22.png" alt="Prohibited Item 2">
+                <!-- (Other small images) -->
+                <!-- 2 Large Photos -->
+                <div class="large-photos-container">
+                    <img src="2121.png" alt="Prohibited Item Large 1" class="large-img">
+                    <img src="2222.png" alt="Prohibited Item Large 2" class="large-img">
+                </div>
+            </div>
+        </section>
 
-<div class="main">
-    <h2>Guidebook for Prefects - Rules And Regulations</h2>
+        <!-- Other content ... -->
+    </div>
 
-    <!-- Prohibited Items Section -->
-    <section id="prohibited-items">
-        <h3>Prohibited Items</h3>
-        <div class="prohibited-items">
-            <!-- 21 Small Photos -->
-            <img src="11.png" alt="Prohibited Item 1">
-            <img src="22.png" alt="Prohibited Item 2">
-            <img src="33.png" alt="Prohibited Item 3">
-            <img src="44.png" alt="Prohibited Item 4">
-            <img src="55.png" alt="Prohibited Item 5">
-            <img src="66.png" alt="Prohibited Item 6">
-            <img src="77.png" alt="Prohibited Item 7">
-            <img src="88.png" alt="Prohibited Item 8">
-            <img src="99.png" alt="Prohibited Item 9">
-            <img src="1010.png" alt="Prohibited Item 10">
-            <img src="1111.png" alt="Prohibited Item 11">
-            <img src="1212.png" alt="Prohibited Item 12">
-            <img src="1313.png" alt="Prohibited Item 13">
-            <img src="1414.png" alt="Prohibited Item 14">
-            <img src="1515.png" alt="Prohibited Item 15">
-            <img src="1616.png" alt="Prohibited Item 16">
-            <img src="1717.png" alt="Prohibited Item 17">
-            <img src="1818.png" alt="Prohibited Item 18">
-            <img src="1919.png" alt="Prohibited Item 19">
-            <img src="2020.png" alt="Prohibited Item 20">
-            <img src="2323.jpg" alt="Prohibited Item 21">
-            <!-- 2 Large Photos -->
-            <img src="2121.png" alt="Prohibited Item Large 1" class="large-img">
-            <img src="2222.png" alt="Prohibited Item Large 2" class="large-img">
-        </div>
-    </section>
-
-    <hr>
-
-    <section id="Rules">
-        <h3>Rules</h3>
-        <ul>
-            <li>Be serious and proactive.</li>
-            <li>Give warnings and record names if students do not heed warnings.</li>
-            <li>Expel students who are outside the classroom and send them back to their own class.</li>
-            <li>Record names of students with prohibited items (e.g., scissors, correction tape, cutter) and pass to consuls after your shift. Consuls will then bring students and items to the discipline teacher.</li>
-            <li>Ensure students are quiet and reading their books in the morning. No sleeping or chatting. Record names of non-compliant students and pass to consuls after your shift.</li>
-            <li>Reach your duty station on time. Repeated lateness will result in punishment.</li>
-            <li>Give warnings to students sleeping or talking in class. Record names of those who do not comply and pass to consuls after your shift.</li>
-            <li>Be polite and greet teachers; do not ignore them.</li>
-            <li>When taking attendance from consuls, line up. After your shift, return to class in a single line; walking in groups is not allowed.</li>
-            <li>Every Monday and Thursday, check students' nails and hair:
-                <ul>
-                    <li>Write down the names of students with long hair and pass to consuls after your shift.</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
-</div>
+    <footer>
+        &copy; 2024 SMK SACRED HEART. All rights reserved.
+    </footer>
+</body>
+</html>
 
 <footer>
     &copy; 2024 SMK SACRED HEART. All rights reserved.
