@@ -10,6 +10,9 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes at least the full viewport height */
         }
         .header {
             background-color: #800000;
@@ -49,7 +52,7 @@
             overflow: hidden;
         }
         .dropdown .dropbtn {
-            font-size: 16px;  
+            font-size: 16px;
             border: none;
             outline: none;
             color: white;
@@ -85,14 +88,14 @@
             margin: 20px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 60px; 
+            flex: 1; /* Allows main content to expand and push footer to the bottom */
         }
         .footer {
             background-color: #800000;
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: relative; 
+            position: relative;
             width: 100%;
             bottom: 0;
         }
@@ -250,9 +253,10 @@
             </li>
         </ul>
     </section>
+</div>
 
-    <footer>
-        &copy; 2024 Your School. All rights reserved.
-    </footer>
+<footer>
+    &copy; 2024 Your School. All rights reserved.
+</footer>
 </body>
 </html>
