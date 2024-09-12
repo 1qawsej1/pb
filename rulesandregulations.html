@@ -157,7 +157,18 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            justify-content: center;}
+            justify-content: center;
+               }
+        .prohibited-items img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+                    }
+               .large-img img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+                    }
     </style>
 </head>
 <body>
@@ -220,7 +231,7 @@
             <img src="1919.png" alt="Prohibited Item 19">
             <img src="2020.png" alt="Prohibited Item 20">
             <img src="2323.jpg" alt="Prohibited Item 21">
-            <!-- 2 Large Photos -->
+        <div class="large-img">
             <img src="2121.png" alt="Prohibited Item Large 1" class="large-img">
             <img src="2222.png" alt="Prohibited Item Large 2" class="large-img">
         </div>
