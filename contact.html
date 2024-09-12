@@ -33,15 +33,19 @@
             background-color: #510400;
             overflow: hidden;
         }
-        .nav a {
+        .nav a, .dropdown .dropbtn {
             float: left;
             display: block;
             color: white;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
+            background-color: #510400;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
         }
-        .nav a:hover {
+        .nav a:hover, .dropdown .dropbtn:hover {
             background-color: #575757;
         }
         .dropdown {
@@ -49,14 +53,8 @@
             overflow: hidden;
         }
         .dropdown .dropbtn {
-            font-size: 16px;  
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 16px;
-            background-color: inherit;
+            background-color: #510400;
             font-family: inherit;
-            margin: 0;
         }
         .dropdown-content {
             display: none;
@@ -99,6 +97,20 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        .contact-link, .form-link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #800000;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            text-align: center;
+        }
+        .contact-link:hover, .form-link:hover {
+            background-color: #660000;
+        }
     </style>
 </head>
 <body>
@@ -112,28 +124,32 @@
 <div class="nav">
     <a href="index.html">Home</a>
     <div class="dropdown">
-        <button class="dropbtn">Info
-            <i class="fa fa-caret-down"></i>
-        </button>
+        <button class="dropbtn">Info</button>
         <div class="dropdown-content">
             <a href="aboutus.html">Info</a>
             <a href="team.html">Organization</a>
         </div>
-    </div> 
+    </div>
     <div class="dropdown">
-        <button class="dropbtn">Guide Book 
-            <i class="fa fa-caret-down"></i>
-        </button>
+        <button class="dropbtn">Guide Book</button>
         <div class="dropdown-content">
             <a href="appearance.html">Appearance</a>
             <a href="rulesandregulations.html">Rules & Regulations</a>
         </div>
-    </div> 
+    </div>
     <a href="contact.html">Contact</a>
+    <!-- Additional buttons -->
+    <a href="form1.html" class="form-link">Form 1</a>
+    <a href="form2.html" class="form-link">Form 2</a>
+    <a href="form3.html" class="form-link">Form 3</a>
 </div>
+
 <div class="main">
     <h2>Contact Us</h2>
     <p>Join our Telegram group to stay updated and get in touch with us.</p>
+    <a href="https://t.me/+aasqj56yNgIyMDQ1" class="contact-link" target="_blank">Join our Telegram Group</a>
+    <!-- Additional buttons -->
+    <a href="https://t.me/+aasqj56yNgIyMDQ1" class="contact-link" target="_blank">Join our Telegram Group</a>
     <a href="https://t.me/+aasqj56yNgIyMDQ1" class="contact-link" target="_blank">Join our Telegram Group</a>
 </div>
 
