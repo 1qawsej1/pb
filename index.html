@@ -106,7 +106,7 @@
         .slides, .slides-second {
             display: none;
         }
-        .slider img, .slider-second img {
+        .slider video, .slider-second video {
             width: 100%;
         }
         .prev, .next {
@@ -185,16 +185,25 @@
     <h2>Welcome to the School Prefectorial Board Website</h2>
     <p>This is where you can find all the latest information about our school's prefectorial board, upcoming events, our mission, and much more.</p>
 
-    <!-- First Slider -->
+    <!-- First Video Slider -->
     <div class="slider">
         <div class="slides">
-            <img src="1.png" alt="Slide 1">
+            <video autoplay muted loop>
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <div class="slides">
-            <img src="1.png" alt="Slide 2">
+            <video autoplay muted loop>
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <div class="slides">
-            <img src="1.png" alt="Slide 3">
+            <video autoplay muted loop>
+                <source src="video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -206,16 +215,25 @@
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 
-    <!-- Second Slider -->
+    <!-- Second Video Slider -->
     <div class="slider-second">
         <div class="slides-second">
-            <img src="a - Copy.jpg" alt="Slide 1">
+            <video autoplay muted loop>
+                <source src="video4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <div class="slides-second">
-            <img src="b.jpg" alt="Slide 2">
+            <video autoplay muted loop>
+                <source src="video5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <div class="slides-second">
-            <img src="c.jpg" alt="Slide 3">
+            <video autoplay muted loop>
+                <source src="video6.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <a class="prev" onclick="plusSlidesSecond(-1)">&#10094;</a>
         <a class="next" onclick="plusSlidesSecond(1)">&#10095;</a>
@@ -255,60 +273,51 @@
         let i;
         let slides = document.getElementsByClassName("slides");
         let dots = document.getElementsByClassName("dot");
-        if (slideIndex >= slides.length) {
-            slideIndex = 0;
-        } 
-        if (slideIndex < 0) {
-            slideIndex = slides.length - 1;
-        }
+        if (slideIndex >= slides.length) { slideIndex = 0; }
+        if (slideIndex < 0) { slideIndex = slides.length - 1; }
         for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
+            slides[i].style.display = "none";
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
-        slides[slideIndex].style.display = "block";  
+        slides[slideIndex].style.display = "block";
         dots[slideIndex].className += " active";
-        slideInterval = setTimeout(function() { slideIndex++; showSlides(); }, 3000);
+        slideInterval = setTimeout(showSlides, 4000); // Change slide every 4 seconds
     }
 
     // Second Slider Script
     let slideIndexSecond = 0;
-    let slideIntervalSecond;
 
     showSlidesSecond();
 
     function plusSlidesSecond(n) {
         slideIndexSecond += n;
-        clearTimeout(slideIntervalSecond); // Clear the existing timer
+        clearTimeout(slideInterval); // Clear the existing timer
         showSlidesSecond();
     }
 
     function currentSlideSecond(n) {
         slideIndexSecond = n - 1;
-        clearTimeout(slideIntervalSecond); // Clear the existing timer
+        clearTimeout(slideInterval); // Clear the existing timer
         showSlidesSecond();
     }
 
     function showSlidesSecond() {
         let i;
-        let slidesSecond = document.getElementsByClassName("slides-second");
-        let dotsSecond = document.getElementsByClassName("dot-second");
-        if (slideIndexSecond >= slidesSecond.length) {
-            slideIndexSecond = 0;
-        } 
-        if (slideIndexSecond < 0) {
-            slideIndexSecond = slidesSecond.length - 1;
+        let slides = document.getElementsByClassName("slides-second");
+        let dots = document.getElementsByClassName("dot-second");
+        if (slideIndexSecond >= slides.length) { slideIndexSecond = 0; }
+        if (slideIndexSecond < 0) { slideIndexSecond = slides.length - 1; }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
-        for (i = 0; i < slidesSecond.length; i++) {
-            slidesSecond[i].style.display = "none";  
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
         }
-        for (i = 0; i < dotsSecond.length; i++) {
-            dotsSecond[i].className = dotsSecond[i].className.replace(" active", "");
-        }
-        slidesSecond[slideIndexSecond].style.display = "block";  
-        dotsSecond[slideIndexSecond].className += " active";
-        slideIntervalSecond = setTimeout(function() { slideIndexSecond++; showSlidesSecond(); }, 3000);
+        slides[slideIndexSecond].style.display = "block";
+        dots[slideIndexSecond].className += " active";
+        slideInterval = setTimeout(showSlidesSecond, 4000); // Change slide every 4 seconds
     }
 </script>
 
