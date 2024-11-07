@@ -97,56 +97,15 @@
             bottom: 0;
         }
 
-        /* Slider Styles */
-        .slider {
+        /* Video Styles */
+        .video-container {
             position: relative;
             max-width: 100%;
             margin: auto;
         }
-        .slides {
-            display: none;
-        }
-        .slider video {
+        .video-container video {
             width: 100%;
-        }
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-        .dot-container {
-            text-align: center;
-            padding: 20px;
-            background: #ddd;
-        }
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-        .active, .dot:hover {
-            background-color: #717171;
+            height: auto;
         }
     </style>
 </head>
@@ -185,77 +144,18 @@
     <h2>Welcome to the School Prefectorial Board Website</h2>
     <p>This is where you can find all the latest information about our school's prefectorial board, upcoming events, our mission, and much more.</p>
 
-    <!-- Single Video Slider -->
-    <div class="slider">
-        <div class="slides">
-            <video autoplay muted loop>
-                <source src="video1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="slides">
-            <video autoplay muted loop>
-                <source src="video2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="slides">
-            <video autoplay muted loop>
-                <source src="video3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
-    <div class="dot-container">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
+    <!-- Single Video Show -->
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 </div>
 
 <div class="footer">
     <p>&copy; 2024 SMK SACRED HEART. All rights reserved.</p>
 </div>
-
-<script>
-    // Slider Script
-    let slideIndex = 0;
-    let slideInterval;
-
-    showSlides();
-
-    function plusSlides(n) {
-        slideIndex += n;
-        clearTimeout(slideInterval); // Clear the existing timer
-        showSlides();
-    }
-
-    function currentSlide(n) {
-        slideIndex = n - 1;
-        clearTimeout(slideInterval); // Clear the existing timer
-        showSlides();
-    }
-
-    function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("slides");
-        let dots = document.getElementsByClassName("dot");
-        if (slideIndex >= slides.length) { slideIndex = 0; }
-        if (slideIndex < 0) { slideIndex = slides.length - 1; }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex].style.display = "block";
-        dots[slideIndex].className += " active";
-        slideInterval = setTimeout(showSlides, 4000); // Change slide every 4 seconds
-    }
-</script>
 
 </body>
 </html>
